@@ -6,6 +6,7 @@ class ssh::config {
     include ssh::settings
     include ssh::service
     include ::config
+    include concat::setup
 
     case $::operatingsystem {
         CentOS: {
@@ -107,17 +108,27 @@ class ssh::config {
                     group   => $users::root::group,
                     mode    => '0644',
                     content => template("${module_name}/ssh_config.erb");
-                $ssh::settings::sshd_config:
-                    owner   => $::users::root::username,
-                    group   => $::users::root::group,
-                    mode    => '0644',
-                    notify  => Class['ssh::service'], # restart daemon if necessary
-                    content => $sshd_config_content;
                 $ssh::settings::known_hosts:
                     owner   => $::users::root::username,
                     group   => $::users::root::group,
                     mode    => '0644',
                     content => template("${module_name}/known_hosts.erb");
+            }
+
+            concat {
+                $ssh::settings::sshd_config:
+                    owner   => $::users::root::username,
+                    group   => $::users::root::group,
+                    mode    => '0644',
+                    notify  => Class['ssh::service']; # restart daemon if necessary
+            }
+            concat::fragment {"base_config":
+                target  => $ssh::settings::sshd_config,
+                content => $sshd_config_content;
+            }
+            concat::fragment {"roller_key_login":
+                target  => $ssh::settings::sshd_config,
+                content => template("${module_name}/sshd_config_roller_user.erb");
             }
         }
     }
