@@ -369,7 +369,13 @@ class config::base {
     # username to access IMPI interfaces on suitable hosts
     $slaveapi_ipmi_username      = 'releng'
 
+    # OSX netboot - DeployStudio
+    $mac_netboot_ips             = []
+
     # roller
+    $roller_ips                  = []
+    $roller_key_limits           = ''
+    $roller_username             = 'roller'
 
     $roller_image_tag_prod       = '1.0.5'
     $roller_image_tag_dev        = 'latest'
