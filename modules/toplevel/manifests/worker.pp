@@ -11,6 +11,11 @@ class toplevel::worker inherits toplevel::base {
     include users::builder
     include python::system_pip_conf
 
+    # Add ssh user for hardware controller
+    if ($::operatingsystem != 'Windows') {
+        include users::roller
+    }
+
     # apply tweaks
     include tweaks::dev_ptmx
     include tweaks::locale
