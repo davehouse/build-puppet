@@ -1235,7 +1235,15 @@ node 't-linux64-ms-280.test.releng.mdc1.mozilla.com',
     't-linux64-ms-240.test.releng.mdc1.mozilla.com',
     't-linux64-ms-394.test.releng.mdc2.mozilla.com',
     't-linux64-ms-395.test.releng.mdc2.mozilla.com',
-    /^t-linux64-ms-57[0-9]\.test\.releng\.mdc2\.mozilla\.com$/ {
+    't-linux64-ms-571.test.releng.mdc2.mozilla.com',
+    't-linux64-ms-572.test.releng.mdc2.mozilla.com',
+    't-linux64-ms-573.test.releng.mdc2.mozilla.com',
+    't-linux64-ms-574.test.releng.mdc2.mozilla.com',
+    't-linux64-ms-575.test.releng.mdc2.mozilla.com',
+    't-linux64-ms-576.test.releng.mdc2.mozilla.com',
+    't-linux64-ms-577.test.releng.mdc2.mozilla.com',
+    't-linux64-ms-578.test.releng.mdc2.mozilla.com',
+    't-linux64-ms-579.test.releng.mdc2.mozilla.com' {
     $aspects          = [ 'low-security' ]
     $slave_trustlevel = 'try'
     $taskcluster_worker_type = 'gecko-t-linux-talos-b'
