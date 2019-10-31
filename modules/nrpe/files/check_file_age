@@ -99,20 +99,20 @@ $human_age = convert_time($age);
 print "FILE_AGE $result: $opt_f is $human_age seconds old and $size bytes\n";
 exit $ERRORS{$result};
 
-sub convert_time { 
-  my $time = shift; 
-  my $days = int($time / 86400); 
-  $time -= ($days * 86400); 
-  my $hours = int($time / 3600); 
-  $time -= ($hours * 3600); 
-  my $minutes = int($time / 60); 
-  my $seconds = $time % 60; 
-  
-  $days = $days < 1 ? '' : $days .'d '; 
-  $hours = $hours < 1 ? '' : $hours .'h '; 
-  $minutes = $minutes < 1 ? '' : $minutes . 'm '; 
-  $time = $days . $hours . $minutes . $seconds . 's'; 
-  return $time; 
+sub convert_time {
+  my $time = shift;
+  my $days = int($time / 86400);
+  $time -= ($days * 86400);
+  my $hours = int($time / 3600);
+  $time -= ($hours * 3600);
+  my $minutes = int($time / 60);
+  my $seconds = $time % 60;
+
+  $days = $days < 1 ? '' : $days .'d ';
+  $hours = $hours < 1 ? '' : $hours .'h ';
+  $minutes = $minutes < 1 ? '' : $minutes . 'm ';
+  $time = $days . $hours . $minutes . $seconds . 's';
+  return $time;
 }
 
 sub print_usage () {

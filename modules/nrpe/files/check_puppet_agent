@@ -30,7 +30,7 @@
 #  service_description Puppet agent
 #  check_command check_nrpe!check_puppet_agent
 # or
-#  check_command check_nrpe!check_puppet_agent!3600!7200 
+#  check_command check_nrpe!check_puppet_agent!3600!7200
 #}
 
 # CHANGELOG:
@@ -56,7 +56,7 @@ result () {
     3) echo "CRITICAL: Last run was ${time_since_last} seconds ago. crit is ${CRIT}";rc=2 ;;
     5) echo "UNKNOWN: no WARN or CRIT parameters were sent to this check";rc=3 ;;
     6) echo "CRITICAL: Last run had 1 or more errors. Check the logs";rc=2 ;;
-    *) echo "UNKNOWN: unexpected result code "$1"";rc=3 ;;
+    *) echo "UNKNOWN: unexpected result code $1";rc=3 ;;
   esac
   exit $rc
 }
